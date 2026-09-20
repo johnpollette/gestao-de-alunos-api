@@ -3,7 +3,7 @@ import 'dotenv/config';
 
 let tokenEmCache = null
 
-export async function comTokenDeAdmin() {
+export async function TokenDeAdmin() {
     if (!tokenEmCache) {
         const loginResposta = await api()
             .post('/api/auth/login')

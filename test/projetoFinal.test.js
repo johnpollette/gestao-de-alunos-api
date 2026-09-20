@@ -2,7 +2,7 @@ import request from 'supertest';
 import { expect } from 'chai';
 //using helpers  
 import { api } from './helpers/api.js';
-//import { comTokenDeAdmin } from '../helpers/auth.js';
+import { TokenDeAdmin } from './helpers/auth.js';
 
 
 /*Automatizar testes para logar como administrador, cadastrar um aluno, logar como aluno e registrar a entrega de um trabalho como aluno (usar Mocha, SuperTest e Chai)
@@ -24,12 +24,12 @@ describe('Fluxo de Matrícula de Aluno em Disciplina', () => {
             });
             expect(loginRespostaAdmin.status).to.equal(200);
             console.log(loginRespostaAdmin.body.token);
-/*
+
             // register a new student
         const cadastroAlunoResposta = await api()
             .post('/api/admin/alunos')
             .set('Content-Type', 'application/json')
-            .set('Authorization', await comTokenDeAdmin())
+            .set('Authorization', await TokenDeAdmin())
             .send({
                 nome: 'John Doe',
                 email: 'john.doe@example.com',
@@ -40,7 +40,7 @@ describe('Fluxo de Matrícula de Aluno em Disciplina', () => {
         expect(cadastroAlunoResposta.status).to.equal(201);
         const alunoId = cadastroAlunoResposta.body.id;
         console.log(cadastroAlunoResposta.body.id);
-
+/*
         // register  the student in a new discipline
         const matriculaAlunoResposta = await api()
             .post(`/api/admin/disciplinas/disciplina-matematica/matriculas`)
