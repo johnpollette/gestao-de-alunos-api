@@ -1,8 +1,8 @@
 import request from 'supertest';
 import { expect } from 'chai';
 //using helpers  
-import { api } from './helpers/api.js';
-import { TokenDeAdmin } from './helpers/auth.js';
+import { api } from '../helpers/api.js';
+import { TokenDeAdmin } from '../helpers/auth.js';
 
 
 /*Automatizar testes para logar como administrador, cadastrar um aluno, logar como aluno e registrar a entrega de um trabalho como aluno (usar Mocha, SuperTest e Chai)
