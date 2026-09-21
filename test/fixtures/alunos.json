@@ -1,0 +1,20 @@
+[
+  {
+    "testTitle": "Validar que um aluno que acaba de ser cadastrado pode entregar um trabalho em uma disciplina que ele está matriculado",
+    "dadosAluno": {
+      "nome": "John Doe1",
+      "email": "john.doe1@example.com",
+      "matricula": "20230123451",
+      "senha": "password123"
+    },
+    "loginAluno": {
+      "email": "john.doe1@example.com",
+      "senha": "password123"
+    },
+    "RegisterSubmission": {
+      "disciplinaId": "disciplina-matematica",
+      "titulo": "Trabalho de Matemática",
+      "descricao": "Descrição do trabalho de matemática John Doe1"
+    }
+  }
+]
