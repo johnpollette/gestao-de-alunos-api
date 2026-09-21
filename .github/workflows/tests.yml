@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main]
 
+  schedule:
+   
+    #Roda a cada 30 minutos
+    - cron: '*/30 * * * *'
 jobs:
   test:
     runs-on: ubuntu-latest
