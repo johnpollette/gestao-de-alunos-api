@@ -44,16 +44,16 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
-      - name: Executar testes
-        run: npm test
-        env:
-          MONGODB_URI: mongodb://127.0.0.1:27017/gestao-de-alunos-test
-
       - name: Iniciar API
         run: npm start > server.log 2>&1 &
 
       - name: Aguardar API
         run: curl --retry 30 --retry-all-errors --retry-delay 1 --fail http://localhost:3000/
+
+      - name: Executar testes
+        run: npm test
+        env:
+          MONGODB_URI: mongodb://127.0.0.1:27017/gestao-de-alunos-test
 
       - name: Executar testes
         run: npm test
