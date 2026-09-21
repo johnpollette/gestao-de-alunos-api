@@ -16,6 +16,17 @@ describe("Fluxo de Matrícula de Aluno em Disciplina", () => {
   testesAlunos.forEach((testeAluno) => {
     
     it.only(testeAluno.testTitle, async () => {
+        // // deleting student if exists
+        // const alunoExistente = await api()
+        //   .get(`/api/admin/alunos?email=${testeAluno.dadosAluno.id}`)
+        //   .set("Authorization", await TokenDeAdmin());
+
+        // if (alunoExistente.body.length > 0) {
+        //   await api()
+        //     .delete(`/api/admin/alunos/${alunoExistente.body[0].id}`)
+        //     .set("Authorization", await TokenDeAdmin());
+        // }
+
 
       // register a new student
       const cadastroAlunoResposta = await api()
@@ -24,9 +35,8 @@ describe("Fluxo de Matrícula de Aluno em Disciplina", () => {
         .set("Authorization", await TokenDeAdmin())
         .send(testeAluno.dadosAluno);
 
-      //expect(cadastroAlunoResposta.status).to.equal(200);
+        // Define the alunoId variable to be used later
       const alunoId = cadastroAlunoResposta.body.id;
-      console.log(cadastroAlunoResposta.body.id);
 
       // register the student in a new discipline
       const matriculaAlunoResposta = await api()
@@ -37,8 +47,6 @@ describe("Fluxo de Matrícula de Aluno em Disciplina", () => {
           alunoId: cadastroAlunoResposta.body.id,
         });
 
-      //expect(matriculaAlunoResposta.status).to.equal(200);
-      console.log(matriculaAlunoResposta.body);
 
       // Log in as the student
       const loginRespostaAluno = await api()
