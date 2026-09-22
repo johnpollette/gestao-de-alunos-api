@@ -14,20 +14,7 @@ Os testes precisam rodar na pipeline do Github Actions
 
 describe("Fluxo de Matrícula de Aluno em Disciplina", () => {
   testesAlunos.forEach((testeAluno) => {
-    
     it.only(testeAluno.testTitle, async () => {
-        // // deleting student if exists
-        // const alunoExistente = await api()
-        //   .get(`/api/admin/alunos?email=${testeAluno.dadosAluno.id}`)
-        //   .set("Authorization", await TokenDeAdmin());
-
-        // if (alunoExistente.body.length > 0) {
-        //   await api()
-        //     .delete(`/api/admin/alunos/${alunoExistente.body[0].id}`)
-        //     .set("Authorization", await TokenDeAdmin());
-        // }
-
-
       // register a new student
       const cadastroAlunoResposta = await api()
         .post("/api/admin/alunos")
@@ -35,7 +22,7 @@ describe("Fluxo de Matrícula de Aluno em Disciplina", () => {
         .set("Authorization", await TokenDeAdmin())
         .send(testeAluno.dadosAluno);
 
-        // Define the alunoId variable to be used later
+      // Define the alunoId variable to be used later
       const alunoId = cadastroAlunoResposta.body.id;
 
       // register the student in a new discipline
@@ -46,7 +33,6 @@ describe("Fluxo de Matrícula de Aluno em Disciplina", () => {
         .send({
           alunoId: cadastroAlunoResposta.body.id,
         });
-
 
       // Log in as the student
       const loginRespostaAluno = await api()
