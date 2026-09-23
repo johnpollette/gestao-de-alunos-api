@@ -13,7 +13,11 @@ Os testes precisam rodar na pipeline do Github Actions
 */
 
 describe("Fluxo de Matrícula de Aluno em Disciplina", () => {
-  testesAlunos.forEach((testeAluno) => {
+  // ANTES DE RODAR ESSE IT:
+  // - Tenha o email admin@escola.com e a senha admin123 cadastrados no banco
+  // - Não ter no banco de dados uma aluna com email john.doe1@example.com e a matricula 20230123451
+
+    testesAlunos.forEach((testeAluno) => {
     it.only(testeAluno.testTitle, async () => {
       // register a new student
       const cadastroAlunoResposta = await api()
